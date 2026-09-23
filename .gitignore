@@ -1,0 +1,22 @@
+# licenses and credentials
+*.lic
+kc.lic
+
+# runtime data (generated fresh on every run)
+log/
+hdb/
+out/
+data/
+
+# compiled artifacts
+feed_cpp
+tests/test_ser
+bench/bench_ser
+*.o
+*.so
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
