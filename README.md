@@ -14,7 +14,7 @@ tested, and mirrors a piece of a real investment-bank data stack.
 | 01 | [q Data Explorer](projects/01_q-data-explorer/) | q fundamentals · qSQL · CSV/HDB | q | guided walkthrough, annotated from scratch |
 | 02 | [Real-Time Tick System](projects/02_real-time-tick/) | tick architecture · IPC · C++ | q, C++ | **C++ feed handler speaking raw kdb+ IPC**, RDB/HDB, tests, benchmarks |
 | 03 | [Java HDB Service](projects/03_java-hdb-service/) | Spring Boot · kdb+ IPC · REST | Java, q | REST API over the HDB via the KX Java client; pooling, tests |
-| 04+ | _planned_ | C# subscriber to the tickerplant | C# | enterprise-language track |
+| 04 | [C# Tick Subscriber](projects/04_csharp-subscriber/) | .NET 8 · kdb+ IPC · streaming | C#, q | subscribes to the tickerplant, live per-symbol aggregation, reconnect |
 
 ## Architecture at a glance
 
@@ -47,8 +47,9 @@ diagrams. Architecture decisions are recorded as
 | Partitioned + splayed HDB, `.Q.en`, sym enumeration | 01, 02 |
 | **C++**: raw sockets, custom binary serialization, feed handler | 02 |
 | **Java**: Spring Boot, REST, connection pooling, kdb+ IPC client | 03 |
-| Software engineering: DRY, KISS/YAGNI, single responsibility | 02, 03 |
-| Testing: byte-exact unit tests, end-to-end integration, web tests | 02, 03 |
+| **C#**: .NET 8, generic host, streaming subscriber, reconnect | 04 |
+| Software engineering: DRY, KISS/YAGNI, single responsibility | 02, 03, 04 |
+| Testing: byte-exact unit tests, end-to-end integration, web/service tests | 02, 03, 04 |
 | Benchmarking: throughput + latency measurement | 02 |
 
 ## Repository layout
@@ -64,6 +65,9 @@ kdb-portfolio/
       docs/architecture.md
       docs/adr/             <- Architecture Decision Records
     03_java-hdb-service/    <- Spring Boot REST service over the HDB
+      docs/architecture.md
+      docs/adr/
+    04_csharp-subscriber/   <- .NET 8 subscriber to the tickerplant
       docs/architecture.md
       docs/adr/
 ```

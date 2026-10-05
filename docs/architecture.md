@@ -28,19 +28,17 @@ flowchart TB
 
     subgraph Consume["Consumers / services"]
         Q["q analytics\nproject 01"]
-        J["Java service\nproject 03"]
-        C["C# app\nplanned"]
+        J["Java REST service\nproject 03"]
+        C["C# subscriber\nproject 04"]
     end
     RDB --> Q
     HDB --> Q
     HDB --> J
     RDB --> C
-
-    classDef planned stroke-dasharray: 5 5
-    class C planned
 ```
 
-Dashed nodes are planned. Everything else is implemented in this repository.
+Every node above is implemented in this repository. See the individual project docs for the
+detailed diagrams.
 
 ## Project 02 — real-time tick system
 
