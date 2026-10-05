@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+# kdb+ historical database (project 02 keeps an HDB listening on 5012)
+kdb:
+  host: localhost
+  port: 5012
+  credentials: ""
+  pool-size: 4
+  timeout-millis: 5000
+
+spring:
+  application:
+    name: hdb-service
+
+logging:
+  level:
+    com.koate.hdbservice: INFO
