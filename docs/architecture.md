@@ -28,7 +28,7 @@ flowchart TB
 
     subgraph Consume["Consumers / services"]
         Q["q analytics\nproject 01"]
-        J["Java service\nplanned"]
+        J["Java service\nproject 03"]
         C["C# app\nplanned"]
     end
     RDB --> Q
@@ -37,7 +37,7 @@ flowchart TB
     RDB --> C
 
     classDef planned stroke-dasharray: 5 5
-    class J,C planned
+    class C planned
 ```
 
 Dashed nodes are planned. Everything else is implemented in this repository.

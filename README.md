@@ -13,7 +13,8 @@ tested, and mirrors a piece of a real investment-bank data stack.
 |---|---------|-------|-----------|------------|
 | 01 | [q Data Explorer](projects/01_q-data-explorer/) | q fundamentals · qSQL · CSV/HDB | q | guided walkthrough, annotated from scratch |
 | 02 | [Real-Time Tick System](projects/02_real-time-tick/) | tick architecture · IPC · C++ | q, C++ | **C++ feed handler speaking raw kdb+ IPC**, RDB/HDB, tests, benchmarks |
-| 03+ | _planned_ | Java service on the HDB · C# subscriber | Java, C# | enterprise-language track |
+| 03 | [Java HDB Service](projects/03_java-hdb-service/) | Spring Boot · kdb+ IPC · REST | Java, q | REST API over the HDB via the KX Java client; pooling, tests |
+| 04+ | _planned_ | C# subscriber to the tickerplant | C# | enterprise-language track |
 
 ## Architecture at a glance
 
@@ -40,13 +41,14 @@ diagrams. Architecture decisions are recorded as
 
 | Area | Where |
 |---|---|
-| q language, qSQL, table ops | 01, 02 |
+| q language, qSQL, table ops | 01, 02, 03 |
 | Tick architecture (tickerplant / RDB / HDB) | 02 |
 | IPC: `hopen`, sync/async, `.z.pg`/`.z.ps`, subscriber catch-up | 02 |
 | Partitioned + splayed HDB, `.Q.en`, sym enumeration | 01, 02 |
 | **C++**: raw sockets, custom binary serialization, feed handler | 02 |
-| Software engineering: DRY, KISS/YAGNI, single responsibility | 02 |
-| Testing: byte-exact unit tests, end-to-end integration | 02 |
+| **Java**: Spring Boot, REST, connection pooling, kdb+ IPC client | 03 |
+| Software engineering: DRY, KISS/YAGNI, single responsibility | 02, 03 |
+| Testing: byte-exact unit tests, end-to-end integration, web tests | 02, 03 |
 | Benchmarking: throughput + latency measurement | 02 |
 
 ## Repository layout
@@ -61,6 +63,9 @@ kdb-portfolio/
     02_real-time-tick/      <- flagship: tick system + C++ feed
       docs/architecture.md
       docs/adr/             <- Architecture Decision Records
+    03_java-hdb-service/    <- Spring Boot REST service over the HDB
+      docs/architecture.md
+      docs/adr/
 ```
 
 ## Running a project
